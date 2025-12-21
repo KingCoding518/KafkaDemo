@@ -9,7 +9,7 @@ import java.util.concurrent.ExecutionException;
  * @auth roykingw
  */
 public class MyProducer {
-    private static final String BOOTSTRAP_SERVERS = "worker1:9092,worker2:9092,worker3:9092";
+    private static final String BOOTSTRAP_SERVERS = "127.0.0.1:9192,127.0.0.1:9292,127.0.0.1:9392";
     private static final String TOPIC = "disTopic";
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
@@ -27,7 +27,7 @@ public class MyProducer {
 
         Producer<String, String> producer = new KafkaProducer<>(props);
 //        CountDownLatch latch = new CountDownLatch(5);
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 1000; i++) {
             // Part2:构建消息
             ProducerRecord<String, String> record = new ProducerRecord<>(TOPIC, Integer.toString(i), "MyProducer" + i);
             // Part3:发送消息
