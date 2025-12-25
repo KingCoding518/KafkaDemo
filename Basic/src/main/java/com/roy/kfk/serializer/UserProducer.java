@@ -9,7 +9,7 @@ import java.util.concurrent.ExecutionException;
  * @auth roykingw
  */
 public class UserProducer {
-    private static final String BOOTSTRAP_SERVERS = "worker1:9092,worker2:9092,worker3:9092";
+    private static final String BOOTSTRAP_SERVERS = "127.0.0.1:9192,127.0.0.1:9292,127.0.0.1:9392";
     private static final String TOPIC = "userTopic";
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {

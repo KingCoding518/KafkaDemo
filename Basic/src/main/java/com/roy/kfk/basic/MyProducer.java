@@ -31,17 +31,18 @@ public class MyProducer {
             // Part2:构建消息
             ProducerRecord<String, String> record = new ProducerRecord<>(TOPIC, Integer.toString(i), "MyProducer" + i);
             // Part3:发送消息
-            // 单向发送：不关心服务端的应答。
+            // 发送消息的三种方式
+            // 方式一：单向发送：不关心服务端的应答。
 //            producer.send(record);
 //            System.out.println("message "+i+" sended");
-            // 同步发送：获取服务端应答消息前，会阻塞当前线程。
+            // 方式二：同步发送：获取服务端应答消息前，会阻塞当前线程。
             RecordMetadata recordMetadata = producer.send(record).get();
             String topic = recordMetadata.topic();
             int partition = recordMetadata.partition();
             long offset = recordMetadata.offset();
             String message = recordMetadata.toString();
             System.out.println("message:[" + message + "] sended with topic:" + topic + "; partition:" + partition + ";offset:" + offset);
-            // 异步发送：消息发送后不阻塞，服务端有应答后会触发回调函数
+            // 方式三：异步发送：消息发送后不阻塞，服务端有应答后会触发回调函数
 //            producer.send(record, new Callback() {
 //                @Override
 //                public void onCompletion(RecordMetadata recordMetadata, Exception e) {

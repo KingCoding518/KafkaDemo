@@ -20,6 +20,7 @@ public class MyConsumer {
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS);
         // 每个消费者要指定一个group
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "test");
+        // 为 true 是设置自动提交offset，默认是true
 //        props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG,false);
         // key序列化类
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer");
